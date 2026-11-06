@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oblivion is freedom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat';
+            overflow: hidden;
+            color: rgb(243, 243, 243);
+            background-color: rgb(12, 12, 12);
+            margin: 0;
+            transition: background-color 0.01s ease; 
+        }
+
+        h1 {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.1s ease;
+            text-align: center;
+            font-size: 2.5rem;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="l1">OBLIVION IS FREEDOM</h1>
+    <h1 id="l2">THEY ARE DEAD, THEY ARE GONE</h1>
+    <h1 id="l3">NO ONE LASTS FOREVER</h1>
+
+    <script>
+        const l1 = document.getElementById("l1");
+        const l2 = document.getElementById("l2");
+        const l3 = document.getElementById("l3");
+        const body = document.body;
+
+        const texts = [l1, l2, l3];
+        let currentIndex = 0;
+
+    
+        function cycleText() {
+            texts.forEach(el => el.style.opacity = 0);
+
+            texts[currentIndex].style.opacity = 1;
+
+            currentIndex = (currentIndex + 1) % texts.length;
+        }
+        function flashBackground() {
+            const isWhite = body.style.backgroundColor === "rgb(255, 255, 255)";
+            body.style.backgroundColor = isWhite ? "rgb(12, 12, 12)" : "rgb(255, 255, 255)";
+            body.style.color = isWhite ? "rgb(243, 243, 243)" : "rgb(12, 12, 12)";
+        }
+        setInterval(cycleText, 800);
+        setInterval(flashBackground, 100);
+        cycleText();
+    </script>
+</body>
+</html>
